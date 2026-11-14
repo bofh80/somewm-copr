@@ -48,6 +48,7 @@ configuration model and wlroots.
 
 %build
 %meson
+%meson --wrap-mode=default
 %meson_build
 
 %install
