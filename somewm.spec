@@ -33,8 +33,10 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  lua-lgi
+BuildRequires:  lua-lgi-compat
 
 Requires:       lua-lgi
+Requires:       lua-lgi-compat
 Requires:       xorg-x11-server-Xwayland
 
 %description
