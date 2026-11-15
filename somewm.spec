@@ -28,12 +28,26 @@ BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(wlroots-0.20)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  lua-lgi
 BuildRequires:  lua-lgi-compat
+BuildRequires:  glslang
+BuildRequires:  vulkan-headers
+BuildRequires:  xorg-x11-server-Xwayland-devel
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(hwdata)
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(xcb-composite)
+BuildRequires:  pkgconfig(xcb-errors)
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xcb-render)
+BuildRequires:  pkgconfig(xcb-res)
+
 
 Requires:       lua-lgi
 Requires:       lua-lgi-compat
@@ -47,7 +61,23 @@ configuration model and wlroots.
 %autosetup -n %{name}-%{version}
 
 %build
-%meson --wrap-mode=default
+%set_build_flags
+meson setup %{_vpath_builddir} \
+    --prefix=%{_prefix} \
+    --libdir=%{_libdir} \
+    --libexecdir=%{_libexecdir} \
+    --bindir=%{_bindir} \
+    --sbindir=%{_sbindir} \
+    --includedir=%{_includedir} \
+    --datadir=%{_datadir} \
+    --mandir=%{_mandir} \
+    --infodir=%{_infodir} \
+    --localedir=%{_localedir} \
+    --sysconfdir=%{_sysconfdir} \
+    --localstatedir=%{_localstatedir} \
+    --sharedstatedir=%{_sharedstatedir} \
+    --buildtype=plain \
+    --wrap-mode=default
 %meson_build
 
 %install
