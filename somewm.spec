@@ -85,16 +85,25 @@ meson setup %{_vpath_builddir} \
 
 %install
 %meson_install
+rm -rf %{buildroot}%{_includedir}/wlroots-0.20
+rm -f %{buildroot}%{_libdir}/libwlroots-0.20.a
+rm -f %{buildroot}%{_libdir}/pkgconfig/wlroots-0.20.pc
 
 %files
 %license LICENSE
 %doc README.md
+%dir %{_sysconfdir}/xdg/somewm
+%config(noreplace) %{_sysconfdir}/xdg/somewm/somewmrc.lua
 %{_bindir}/somewm
 %{_bindir}/somewm-client
+%{_libdir}/liblgi_closure_guard.so
 %{_datadir}/somewm/
 %{_datadir}/wayland-sessions/somewm.desktop
+%{_datadir}/xdg-desktop-portal/portals/somewm.portal
 %{_mandir}/man1/somewm*.1*
-%{_userunitdir}/somewm*
+
+
+
 
 %changelog
 * Sat Nov 14 2026 Builder <builder@example.com> - 2.1.2-1
