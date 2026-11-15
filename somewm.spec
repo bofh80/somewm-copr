@@ -89,11 +89,18 @@ rm -rf %{buildroot}%{_includedir}/wlroots-0.20
 rm -f %{buildroot}%{_libdir}/libwlroots-0.20.a
 rm -f %{buildroot}%{_libdir}/pkgconfig/wlroots-0.20.pc
 
+if [ -f %{buildroot}/usr/etc/xdg/somewm/somewmrc.lua ]; then
+    mkdir -p %{buildroot}/etc/xdg/somewm
+    mv %{buildroot}/usr/etc/xdg/somewm/somewmrc.lua %{buildroot}/etc/xdg/somewm/
+    rmdir -p --ignore-fail-on-non-empty %{buildroot}/usr/etc/xdg/somewm
+fi
+
+
 %files
 %license LICENSE
 %doc README.md
-%dir %{_sysconfdir}/xdg/somewm
-%config(noreplace) %{_sysconfdir}/xdg/somewm/somewmrc.lua
+%dir /etc/xdg/somewm
+%config(noreplace) /etc/xdg/somewm/somewmrc.lua
 %{_bindir}/somewm
 %{_bindir}/somewm-client
 %{_libdir}/liblgi_closure_guard.so
@@ -101,6 +108,7 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/wlroots-0.20.pc
 %{_datadir}/wayland-sessions/somewm.desktop
 %{_datadir}/xdg-desktop-portal/portals/somewm.portal
 %{_mandir}/man1/somewm*.1*
+
 
 
 
