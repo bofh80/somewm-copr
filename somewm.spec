@@ -89,11 +89,9 @@ rm -rf %{buildroot}%{_includedir}/wlroots-0.20
 rm -f %{buildroot}%{_libdir}/libwlroots-0.20.a
 rm -f %{buildroot}%{_libdir}/pkgconfig/wlroots-0.20.pc
 
-if [ -f %{buildroot}/usr/etc/xdg/somewm/somewmrc.lua ]; then
-    mkdir -p %{buildroot}/etc/xdg/somewm
-    mv %{buildroot}/usr/etc/xdg/somewm/somewmrc.lua %{buildroot}/etc/xdg/somewm/
-    rmdir -p --ignore-fail-on-non-empty %{buildroot}/usr/etc/xdg/somewm
-fi
+rm -rf %{buildroot}/etc/xdg/somewm
+install -D -m 0644 somewmrc.lua %{buildroot}/etc/xdg/somewm/somewmrc.lua
+
 
 
 %files
