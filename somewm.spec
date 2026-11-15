@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-res)
-
+BuildRequires:  pkgconfig(xcb-renderutil)
 
 Requires:       lua-lgi
 Requires:       lua-lgi-compat
