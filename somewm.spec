@@ -47,7 +47,6 @@ configuration model and wlroots.
 %autosetup -n %{name}-%{version}
 
 %build
-%meson
 %meson --wrap-mode=default
 %meson_build
 
