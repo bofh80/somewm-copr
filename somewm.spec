@@ -48,6 +48,9 @@ BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-res)
 BuildRequires:  pkgconfig(xcb-renderutil)
+BuildRequires:  pkgconfig(xcb-atom)
+BuildRequires:  pkgconfig(xcb-cursor)
+BuildRequires:  pkgconfig(xcb-keysyms)
 
 Requires:       lua-lgi
 Requires:       lua-lgi-compat
